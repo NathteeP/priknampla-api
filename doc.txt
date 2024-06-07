@@ -1,0 +1,21 @@
+--- REGISTER
+POST /auth/register
+BODY 
+    userName
+    displayName
+    password
+    confirmPassword
+RESPONSE
+    200 message
+    400 message
+    500 message
+
+--- LOGIN
+POST /auth/login
+BODY
+    userName
+    password
+RESPONSE
+    200 accessToken
+    400 message
+    500 message
