@@ -6,6 +6,8 @@ const morgan = require('morgan')
 const authRouter = require('./routes/auth-route')
 const notFoundMiddleware = require('./middlewares/not-found')
 const errorMiddleware = require('./middlewares/error')
+const recipeRouter = require('./routes/recipe-route')
+const favRouter = require('./routes/fav-route')
 
 const app = express()
 
@@ -14,6 +16,8 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 app.use('/auth', authRouter)
+app.use('/recipe', recipeRouter)
+app.use('/fav', favRouter)
 
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)

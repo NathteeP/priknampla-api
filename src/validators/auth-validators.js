@@ -6,3 +6,8 @@ exports.registerSchema = Joi.object({
     password: Joi.string().required().pattern(/^[a-zA-Z0-9@.#$!%*?&^]{6,}$/),
     confirmPassword: Joi.string().required().valid(Joi.ref('password')).strip(),
 })
+
+exports.loginSchema = Joi.object({
+    userName: Joi.string().required(),
+    password: Joi.string().required()
+})

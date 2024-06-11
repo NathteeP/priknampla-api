@@ -10,4 +10,11 @@ userService.findUserByUserName = userName =>
         }
     })
 
+userService.findUserById = userId =>
+    prisma.user.findUnique({
+        where: {
+            id: userId
+        }
+    })
+
 module.exports = userService

@@ -19,3 +19,18 @@ RESPONSE
     200 accessToken
     400 message
     500 message
+
+--- SEARCH
+
+GET /recipe
+not finished
+
+--- CREATE recipe
+POST /recipe
+HEADER
+Authorization Bearer accessToken
+RESPONSE
+    201 message
+    400 message
+    401 message
+    500 message
