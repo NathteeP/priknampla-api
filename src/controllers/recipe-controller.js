@@ -1,11 +1,20 @@
 const recipeService = require("../services/recipe-service")
 const createError = require("../utils/create-error")
-
 const recipeController = {}
 
 recipeController.search = async (req,res,next) => {
     try{
+        const searchTerm = req.query.search
+        const searchArray = searchTerm.split('%20')
+        const allSearchResult = []
 
+        for (let word of searchArray) {
+            word = `%${word}%`
+            const result = await recipeService.search(word)
+            if (Object(result).length > 0) allSearchResult.push(result)
+        }
+        res.status(200).json(allSearchResult)    
+    
     } catch (err) {
         next(err)
     }

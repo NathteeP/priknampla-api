@@ -7,7 +7,7 @@ const authController = {}
 
 authController.register = async (req,res,next) => {
     try {
-const data = req.body
+const data = req.input
 const existUser = await userService.findUserByUserName(data.userName)
 
 if (existUser) {
@@ -47,6 +47,10 @@ authController.login = async (req,res,next) => {
     } catch (err) {
         next(err)
     }
+}
+
+authController.getMe = (req,res,next) => {
+    res.status(200).json({user: req.user})
 }
 
 module.exports = authController
