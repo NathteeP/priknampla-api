@@ -20,7 +20,6 @@ const createRecipe = async (req,res,next) => {
             ingredientsData.forEach(element => element.tableId = tableIdRes.tableId)
             await recipeService.createManyIngredients(ingredientsData)
         }
-        console.log('ingredient uploaded')
 
         const stepData = req.body.step
         stepData.forEach(element => {
@@ -29,7 +28,7 @@ const createRecipe = async (req,res,next) => {
 
         await recipeService.createManySteps(stepData)
 
-        res.status(200).json('recipe created')
+        res.status(200).json(req.body)
 
     } catch (err) {
         next(err)
