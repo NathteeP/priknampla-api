@@ -10,7 +10,24 @@ favService.findRecipeRatingByUserIdAndRecipeId = (userId, recipeId) =>
         }
     })
 
-
+favService.findAllUserFav = (userId) => 
+    prisma.recipeRating.findMany({
+        where:{
+            userId: userId,
+            isFavorite: true
+        },
+        include: {
+            recipe: {
+                include: {
+                    user: {
+                        select: {
+                            displayName:true
+                        }
+                    }
+                }
+            }
+        }
+    })
 
 favService.addFavOrRating = (data) => 
     prisma.recipeRating.create({data})
