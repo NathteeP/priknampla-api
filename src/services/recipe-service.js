@@ -24,6 +24,8 @@ recipeService.findRecipeById = recipeId => prisma.recipe.findFirst({where: {id:r
    
 })
 
+recipeService.getRecipeRating = recipeId => prisma.recipeRating.findMany({where: {recipeId}})
+
 
 recipeService.search = async input => {
     return await prisma.$queryRaw`SELECT r.id, r.name, r.preparedTime, r.picture, u.displayName FROM recipe r INNER JOIN user u ON r.ownerId=u.id WHERE name like ${input}`

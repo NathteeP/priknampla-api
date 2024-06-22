@@ -10,5 +10,6 @@ recipeRouter.get('/:recipeId', recipeController.getRecipe)
 recipeRouter.post('/', authenticate, recipeController.createRecipe)
 recipeRouter.patch('/picture', upload.single('picture'),
 recipeController.uploadRecipePicture)
+recipeRouter.get('/rating/:recipeId', recipeController.getRecipeRating)
 
 module.exports = recipeRouter

@@ -45,4 +45,13 @@ recipeController.uploadRecipePicture = async (req,res,next) => {
     }
 }
 
+recipeController.getRecipeRating =  async (req,res,next) => {
+    try{
+        const result = await recipeService.getRecipeRating(+req.params.recipeId)
+        res.status(200).json(result)
+    } catch (err) {
+        next(err)
+    }
+}
+
 module.exports = recipeController
