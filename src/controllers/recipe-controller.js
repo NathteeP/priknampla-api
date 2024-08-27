@@ -1,5 +1,6 @@
 const { picture } = require("../config/cloudinary")
 const createRecipe = require("../services/create-recipe")
+const editRecipe = require("../services/edit-recipe")
 const recipeService = require("../services/recipe-service")
 const uploadService = require("../services/upload-service")
 const recipeController = {}
@@ -32,6 +33,7 @@ recipeController.getRecipe = async (req,res,next) => {
 }
 
 recipeController.createRecipe = createRecipe
+recipeController.editRecipe = editRecipe
 
 recipeController.uploadRecipePicture = async (req,res,next) => {
     try {
